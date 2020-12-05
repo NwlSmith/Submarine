@@ -21,6 +21,7 @@ public class SubmarineMovement : MonoBehaviour
     // Rotation parameters
     [SerializeField] private float vertMouseSensitivity = 100f;
     [SerializeField] private float horiMouseSensitivity = 100f;
+    [SerializeField] private float rotSensitivity = 1f;
     [SerializeField] private float mouseMovementSmoothing = 10f;
 
     private Quaternion intendedRot = Quaternion.identity;
@@ -31,6 +32,7 @@ public class SubmarineMovement : MonoBehaviour
     private float moveX; // Horizontal movement
     private float rotH; // Horizontal rotation
     private float rotV; // Vertical rotation
+    private float rotR; // Rotational (Z axis) rotation
     private float shift; // Sprint?
 
     private void Awake()
@@ -44,8 +46,9 @@ public class SubmarineMovement : MonoBehaviour
         moveX = Input.GetAxis("Horizontal");
         rotH = Input.GetAxis("Mouse X"); // moving the mouse left/right should rotate player around y axis
         rotV = Input.GetAxis("Mouse Y"); // moving the mouse up/down should rotate player around x axis
+        rotR = Input.GetAxis("Rotate"); // moving the mouse up/down should rotate player around x axis
         shift = Input.GetAxis("Sprint");
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0f);
+        //transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0f);
         /*
         if (transform.eulerAngles.x > 180f)
         {
@@ -96,8 +99,24 @@ public class SubmarineMovement : MonoBehaviour
             // Retrieve mouse input.
             float intendedRotChangeH = rotH * horiMouseSensitivity;
             float intendedRotChangeV = rotV * vertMouseSensitivity;
+            float intendedRotChangeR = rotR * rotSensitivity;
 
-            
+            // if you are not pressing a rotation button, try to right the sub
+            if (rotR < .01f && rotR > -.01f)
+            {
+                float zRot = transform.localEulerAngles.z % 360f;
+                // if rotated too far to right, rotate left
+                if (zRot < 180f)
+                {
+                    intendedRotChangeR = rotSensitivity * .05f;
+                } // if rotated too far to right, rotate left
+                else if (zRot > 180f)
+                {
+                    intendedRotChangeR = rotSensitivity * -.05f;
+                }
+            }
+
+            /*
 
             float intendedRotH = transform.localEulerAngles.y;
             float intendedRotV = transform.localEulerAngles.x;
@@ -112,8 +131,9 @@ public class SubmarineMovement : MonoBehaviour
             Quaternion finalRot = Quaternion.Lerp(transform.localRotation, intendedRot, Time.fixedDeltaTime * mouseMovementSmoothing);
 
             //rb.MoveRotation(finalRot);
-            
-            Vector3 change = new Vector3(-intendedRotChangeV, intendedRotChangeH, 0f);
+            */
+
+            Vector3 change = new Vector3(-intendedRotChangeV, intendedRotChangeH, -intendedRotChangeR);
             rb.AddRelativeTorque(change, ForceMode.Force);
 
 
