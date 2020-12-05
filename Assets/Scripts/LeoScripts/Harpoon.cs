@@ -13,6 +13,7 @@ public class Harpoon : MonoBehaviour
 
     void Awake() 
     {
+        HarpoonGun.instance.Harpoon = this.gameObject;
         MyJoint.connectedBody = HarpoonGun.instance.RB;
     }
     void Start()
