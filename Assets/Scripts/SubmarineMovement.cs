@@ -22,7 +22,6 @@ public class SubmarineMovement : MonoBehaviour
     [SerializeField] private float vertMouseSensitivity = 100f;
     [SerializeField] private float horiMouseSensitivity = 100f;
     [SerializeField] private float rotSensitivity = 1f;
-    [SerializeField] private float mouseMovementSmoothing = 10f;
 
     private Quaternion intendedRot = Quaternion.identity;
 
@@ -108,11 +107,11 @@ public class SubmarineMovement : MonoBehaviour
                 // if rotated too far to right, rotate left
                 if (zRot < 180f)
                 {
-                    intendedRotChangeR = rotSensitivity * .05f;
+                    intendedRotChangeR = rotSensitivity * .5f;
                 } // if rotated too far to right, rotate left
                 else if (zRot > 180f)
                 {
-                    intendedRotChangeR = rotSensitivity * -.05f;
+                    intendedRotChangeR = rotSensitivity * -.5f;
                 }
             }
 
