@@ -13,6 +13,11 @@ public class PlayerManager : MonoBehaviour
 
     public static PlayerManager instance = null;
 
+    public int health = 5;
+
+    private float lastCollisionTime = 0f;
+    [SerializeField] private float collisionCooldown = 2f;
+
     private SubmarineMovement movement;
 
     private void Awake()
@@ -26,15 +31,24 @@ public class PlayerManager : MonoBehaviour
         movement = GetComponent<SubmarineMovement>();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void TakeDamage(int damage = 1)
     {
-        
+        health -= damage;
     }
 
-    // Update is called once per frame
-    void Update()
+    // handle damage from fast collisions
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.relativeVelocity.magnitude > 5f)
+        {
+            if (lastCollisionTime + collisionCooldown < Time.time)
+            {
+                lastCollisionTime = Time.time;
+                TakeDamage(1);
+                // damage animation
+                // collision sound
+            }
+        }
     }
+
 }
