@@ -1,13 +1,9 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Models/Juicy Rock.fbx.meta
 <<<<<<< HEAD
-guid: 5c78a614bcbee48b7898c0e5c0bc2916
+guid: 53bc03a99e1fd4535a2f48dabf44a4b5
 =======
-guid: 9dd8ca7626b9bbb428d4be2a5379334e
+guid: 8c8c2d515e5b61f42b3f530e880969b0
 >>>>>>> fff0c62a7263fc45889f5622afbd5e5c79665ef8
-=======
-guid: a97f60f6008f17b408a9131a69caf3e9
->>>>>>> c07248137704c31c2f488b549e4dabc1186884dc:Assets/Models/Volcano.blend.meta
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
