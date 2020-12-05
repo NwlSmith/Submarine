@@ -8,6 +8,11 @@ public class HarpoonGun : MonoBehaviour
     public GameObject LockedTarget;
     public Rigidbody RB;
 
+    public GameObject HarpoonPrefab;
+    public GameObject Harpoon;
+    public GameObject RopePrefab;
+    public GameObject Rope;
+
     void Awake() 
     {
         instance = this;
@@ -20,6 +25,22 @@ public class HarpoonGun : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetMouseButton(0))
+        {
+            if (Harpoon == null)
+            {
+                Instantiate(HarpoonPrefab, transform.position, transform.rotation);
+            }
+            if (Rope == null) 
+            {
+                Instantiate(RopePrefab, transform.position, transform.rotation);
+            }
+        }
+        if (Input.GetMouseButtonUp(0)) 
+        {
+            Destroy(Harpoon);
+            Destroy(Rope);
+        }
+
     }
 }
