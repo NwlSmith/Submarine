@@ -179,7 +179,7 @@ MonoBehaviour:
   Child: {fileID: 0}
   RB: {fileID: 6971347832914588942}
   MyJoint: {fileID: 6971347832914588940}
-  Force: 300
+  Force: 800
 --- !u!145 &6971347832914588940
 SpringJoint:
   m_ObjectHideFlags: 0
@@ -192,7 +192,7 @@ SpringJoint:
   m_AutoConfigureConnectedAnchor: 0
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
-  m_Spring: 1
+  m_Spring: 2
   m_Damper: 0.2
   m_MinDistance: 0
   m_MaxDistance: 0
