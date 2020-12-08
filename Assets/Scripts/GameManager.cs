@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance = null;
 
+    public int numPillars = 5;
+
     private void Awake()
     {
         // Ensure that there is only one instance of the GameManager.
@@ -28,5 +30,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ExplodedPillar()
+    {
+
     }
 }
