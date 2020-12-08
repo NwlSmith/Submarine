@@ -28,6 +28,7 @@ public class DestroyPillarTrigger : MonoBehaviour
         if (playerInArea && Input.GetKeyDown(KeyCode.Space))
         {
             GetComponentInParent<DestroyPillar>().TriggerExplosionCountdown();
+            gameObject.SetActive(false);
         }
     }
 }

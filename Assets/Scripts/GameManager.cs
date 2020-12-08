@@ -29,7 +29,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            CameraFX.instance.LowShake();
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            CameraFX.instance.MedShake();
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            CameraFX.instance.HighShake();
     }
 
     public void ExplodedPillar()
