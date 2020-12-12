@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AutoRotator : MonoBehaviour
 {
-    [SerializeField] private Vector3 rotSpeed;
+    [SerializeField] private Vector3 rotSpeed = new Vector3(0, 5, 0);
 
     private void FixedUpdate()
     {
