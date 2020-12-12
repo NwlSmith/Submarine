@@ -14,6 +14,8 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager instance = null;
 
     public int health = 5;
+    [SerializeField] private Light flashlightDim = null;
+    [SerializeField] private Light flashlightBright = null;
 
     private float lastCollisionTime = 0f;
     [SerializeField] private float collisionCooldown = 2f;
@@ -71,4 +73,24 @@ public class PlayerManager : MonoBehaviour
         TakeDamage(1);
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            if (!flashlightDim.enabled && !flashlightBright.enabled)
+            {
+                flashlightDim.enabled = true;
+            }
+            else if (flashlightDim.enabled && !flashlightBright.enabled)
+            {
+                flashlightBright.enabled = true;
+                flashlightDim.enabled = false;
+            }
+            else
+            {
+                flashlightBright.enabled = false;
+                flashlightDim.enabled = false;
+            }
+        }
+    }
 }
