@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float collisionCooldown = 2f;
 
     private SubmarineMovement movement;
+    public CameraFX camFX;
 
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class PlayerManager : MonoBehaviour
             Destroy(gameObject);
 
         movement = GetComponent<SubmarineMovement>();
+        camFX = GetComponentInChildren<CameraFX>();
     }
 
     public void TakeDamage(int damage = 1)
@@ -39,8 +41,11 @@ public class PlayerManager : MonoBehaviour
     // handle damage from fast collisions
     private void OnCollisionEnter(Collision collision)
     {
+
         if (collision.relativeVelocity.magnitude > 5f)
         {
+            camFX.HighShake();
+            // Major hit
             if (lastCollisionTime + collisionCooldown < Time.time)
             {
                 lastCollisionTime = Time.time;
@@ -49,6 +54,21 @@ public class PlayerManager : MonoBehaviour
                 // collision sound
             }
         }
+        else if (collision.relativeVelocity.magnitude > 3f)
+        {
+            // Minor hit
+            camFX.MedShake();
+        }
+        else if (collision.relativeVelocity.magnitude > 1f)
+        {
+            // Very minor hit
+            camFX.LowShake();
+        }
+    }
+
+    public void BossSeenTooLong()
+    {
+        TakeDamage(1);
     }
 
 }

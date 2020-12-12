@@ -44,7 +44,10 @@ public class DestroyPillar : MonoBehaviour
         pillarModelBroken1.SetActive(true);
         pillarModelBroken2.SetActive(true);
 
+        pillarModelBroken1.GetComponent<Rigidbody>().AddExplosionForce(600f, pillarModelBroken1.transform.position + new Vector3(-2f, 5f, 2f), 10f, 10f, ForceMode.Impulse);
+        pillarModelBroken2.GetComponent<Rigidbody>().AddExplosionForce(600f, pillarModelBroken1.transform.position - new Vector3(2f, 5f, 2f), 10f, 10f, ForceMode.Impulse);
 
+        PlayerManager.instance.camFX.HighShake();
 
         yield return new WaitForSeconds(.25f);
 

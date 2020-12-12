@@ -11,6 +11,7 @@ using UnityEngine;
 public class BossSight : MonoBehaviour
 {
     public bool seesPlayer = false;
+    private float timeSeeingPlayer = 0;
     [SerializeField] private PlayerManager playerManager;
 
     // Start is called before the first frame update
@@ -27,11 +28,19 @@ public class BossSight : MonoBehaviour
             // if the boss has uninterrupted line of sight to player
             if (hit.collider.CompareTag("Player"))
             {
+                timeSeeingPlayer += Time.fixedDeltaTime;
+                Debug.Log("timeSeeingPlayer : " + timeSeeingPlayer);
                 // if the boss couldn't previously see the player
                 if (!seesPlayer)
                 {
                     // trigger boss seeing player
                     CaughtPlayer();
+                }
+
+                if (timeSeeingPlayer > GameManager.instance.numPillars)
+                {
+                    Debug.Log("Had sight of player for too long");
+                    playerManager.BossSeenTooLong();
                 }
             }
             else if (seesPlayer)
@@ -57,5 +66,6 @@ public class BossSight : MonoBehaviour
     {
         seesPlayer = false;
         Debug.Log("Boss has lost player.");
+        timeSeeingPlayer = 0;
     }
 }
