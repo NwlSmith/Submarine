@@ -23,6 +23,9 @@ public class PlayerManager : MonoBehaviour
     private SubmarineMovement movement;
     public CameraFX camFX;
 
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip[] collisionSounds; // 0 = hi, 1 = med, 2 = low
+
     private void Awake()
     {
         // Ensure that there is only one instance of the PlayerManager.
@@ -33,6 +36,8 @@ public class PlayerManager : MonoBehaviour
 
         movement = GetComponent<SubmarineMovement>();
         camFX = GetComponentInChildren<CameraFX>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void TakeDamage(int damage = 1)
@@ -47,6 +52,9 @@ public class PlayerManager : MonoBehaviour
         if (collision.relativeVelocity.magnitude > 5f)
         {
             camFX.HighShake();
+            audioSource.clip = collisionSounds[0];
+            audioSource.pitch = Random.Range(.9f, 1.1f);
+            audioSource.Play();
             // Major hit
             if (lastCollisionTime + collisionCooldown < Time.time)
             {
@@ -60,11 +68,17 @@ public class PlayerManager : MonoBehaviour
         {
             // Minor hit
             camFX.MedShake();
+            audioSource.clip = collisionSounds[1];
+            audioSource.pitch = Random.Range(.9f, 1.1f);
+            audioSource.Play();
         }
         else if (collision.relativeVelocity.magnitude > 1f)
         {
             // Very minor hit
             camFX.LowShake();
+            audioSource.clip = collisionSounds[2];
+            audioSource.pitch = Random.Range(.9f, 1.1f);
+            audioSource.Play();
         }
     }
 

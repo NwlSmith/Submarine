@@ -14,6 +14,22 @@ CapsuleCollider:
   m_Height: 233.63116
   m_Direction: 1
   m_Center: {x: -0.0000076293945, y: 116.81558, z: 0}
+--- !u!54 &5350718732005109396
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915811480338549436}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 3
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3146353676748942618
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +98,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 897d9515f930e6c4ca29358905417deb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 92aecde8820337e4bbe8d8bc52d7ee32, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5222,6 +5238,22 @@ CapsuleCollider:
   m_Height: 233.63116
   m_Direction: 1
   m_Center: {x: -0.0000076293945, y: 116.81558, z: 0}
+--- !u!54 &1425807239734696283
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623727798244157477}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 3
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &3146353677197755543
 BoxCollider:
   m_ObjectHideFlags: 0
