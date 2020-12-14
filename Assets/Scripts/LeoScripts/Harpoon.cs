@@ -10,34 +10,47 @@ public class Harpoon : MonoBehaviour
     public SpringJoint MyJoint;
     public float Force;
 
+    private EnemyBaby TargetHit;
+
 
     [Space]
+    public float AnchorShiftX = 0.25f;
+    public float AnchorShiftY = -0.25f;
+    public float AnchorShiftZ = 1.2f;
 
-    public float AnchorShiftY;
-    public float anchorShiftZ;
 
     void Awake() 
     {
+        AnchorShiftX = 0.25f;
+        AnchorShiftY = -0.25f;
+        AnchorShiftZ = 1.2f;
         HarpoonGun.instance.Harpoon = this.gameObject;
         MyJoint.connectedBody = CallPlayerRigidBody.instance.RB;
+        MyJoint.connectedAnchor = new Vector3(AnchorShiftX, AnchorShiftY, AnchorShiftZ);
     }
     void Start()
     {
-
         transform.position = HarpoonGun.instance.gameObject.transform.position;
         transform.rotation = HarpoonGun.instance.gameObject.transform.rotation;
         RB.AddForce(transform.forward*Force);
+        MyJoint.connectedAnchor = new Vector3(AnchorShiftX, AnchorShiftY, AnchorShiftZ);
     }
 
     // Update is called once per frame
     void Update()
     {
         // Rope.transform.position = HarpoonGun.instance.gameObject.transform.position;
-        if (true) 
+        if (Input.GetMouseButton(1))
         {
-            
+            MyJoint.maxDistance = 0f;
+            Debug.Log("Retracting");
+        }
+        else
+        {
+            MyJoint.maxDistance = 15f;
         }
 
+        MyJoint.connectedAnchor = new Vector3(AnchorShiftX, AnchorShiftY, AnchorShiftZ);
 
     }
 
@@ -61,6 +74,11 @@ public class Harpoon : MonoBehaviour
     {
         if (other.tag == "Enemy") 
         {
+            other.GetComponent<EnemyBaby>().enabled = false;
+            other.GetComponent<Rigidbody>().isKinematic = true;
+            //TargetHit.enabled = false;
+            other.transform.parent = transform;
+            other.transform.localPosition = new Vector3(0, 0, Random.Range(1.5f, 2.3f));
         }
 
         if (other.tag == "Wood") 

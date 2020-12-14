@@ -10,7 +10,6 @@ public class Rope : MonoBehaviour
     void Awake()
     {
         HarpoonGun.instance.Rope = this.gameObject;
-        Debug.Log("aaaa");
         transform.LookAt(HarpoonGun.instance.Harpoon.transform);
         RopeBody.transform.localScale = new Vector3(0.1f, 0.1f, Vector3.Distance(transform.position, HarpoonGun.instance.Harpoon.transform.position));
         RopeBody.transform.position = HarpoonGun.instance.transform.position;
