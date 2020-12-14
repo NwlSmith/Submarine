@@ -16,6 +16,11 @@ public class BossSight : MonoBehaviour
     private GameObject lightHolder;
     [SerializeField] private PlayerManager playerManager;
 
+    [SerializeField] private float sightRange = 50f;
+    [SerializeField] private float sightTimeCountdown = 15f;
+
+    [SerializeField] private LayerMask sightLayers;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +34,7 @@ public class BossSight : MonoBehaviour
         if (activated)
         {
             Ray bossToPlayer = new Ray(transform.position, (playerManager.transform.position - transform.position).normalized);
-            if (Physics.Raycast(bossToPlayer, out RaycastHit hit, 50f))
+            if (Physics.Raycast(bossToPlayer, out RaycastHit hit, sightRange, sightLayers))
             {
                 // if the boss has uninterrupted line of sight to player
                 if (hit.collider.CompareTag("Player"))
@@ -45,7 +50,7 @@ public class BossSight : MonoBehaviour
                         CaughtPlayer();
                     }
 
-                    if (timeSeeingPlayer > GameManager.instance.numPillars)
+                    if (timeSeeingPlayer > GameManager.instance.numPillars + sightTimeCountdown)
                     {
                         BossSeenTooLong();
                     }
@@ -54,6 +59,10 @@ public class BossSight : MonoBehaviour
                 {
                     LostPlayer();
                 }
+            }
+            else
+            {
+                LostPlayer();
             }
         }
         else if (seesPlayer)
