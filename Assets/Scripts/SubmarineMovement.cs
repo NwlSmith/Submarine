@@ -82,7 +82,7 @@ public class SubmarineMovement : MonoBehaviour
             // Handle spacial movement
             Vector3 forwardForce;
             forwardForce = Vector3.forward * forwardMovePower * moveZ;
-            
+
 
             if (moveZ > 0 && shift > 0)
             {
@@ -163,5 +163,21 @@ public class SubmarineMovement : MonoBehaviour
 
         rb.AddForce(forceDir * 1000f, ForceMode.Impulse);
         rb.AddTorque(transform.right * 200f, ForceMode.Impulse);
+    }
+
+    public void DeathSequence()
+    {
+        StartCoroutine(DeathSequenceEnum());
+    }
+
+    private IEnumerator DeathSequenceEnum()
+    {
+        while (true)
+        {
+            rb.AddForce(Vector3.down * 1f, ForceMode.Impulse);
+            rb.AddTorque(transform.right * .1f, ForceMode.Impulse);
+            rb.AddTorque(transform.forward * .1f, ForceMode.Impulse);
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

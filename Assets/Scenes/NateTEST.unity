@@ -525,6 +525,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackOverlay: {fileID: 950517850}
+  deathText1: {fileID: 1315555420}
+  deathText2: {fileID: 1609016680}
+  dead: 0
   numPillars: 5
 --- !u!1 &106895680
 GameObject:
@@ -948,17 +951,6 @@ Transform:
   m_Father: {fileID: 13902972}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &274227385 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 148676903230911412, guid: 7852365b2d439694c8ddc187dac31118, type: 3}
-  m_PrefabInstance: {fileID: 148676902959862541}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &278328664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,7 +1352,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2958
+  m_Name: pb_Mesh-1548
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3879,7 +3871,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2986
+  m_Name: pb_Mesh-1576
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4047,6 +4039,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1315555420 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4679732997766097677, guid: 7852365b2d439694c8ddc187dac31118, type: 3}
+  m_PrefabInstance: {fileID: 148676902959862541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1349281767
 GameObject:
   m_ObjectHideFlags: 0
@@ -4506,7 +4509,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2940
+  m_Name: pb_Mesh-1526
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5076,6 +5079,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596537163}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1609016680 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4121549658860398644, guid: 7852365b2d439694c8ddc187dac31118, type: 3}
+  m_PrefabInstance: {fileID: 148676902959862541}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1626959203
 GameObject:
   m_ObjectHideFlags: 0
@@ -11434,22 +11448,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1460486483}
-    - target: {fileID: 629704239498751894, guid: f811afb5bbd123b4c8bcf72eb38e75f0, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 567
-      objectReference: {fileID: 0}
-    - target: {fileID: 1839253682570525672, guid: f811afb5bbd123b4c8bcf72eb38e75f0, type: 3}
-      propertyPath: LoadedHarpoon
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2039641051024973233, guid: f811afb5bbd123b4c8bcf72eb38e75f0, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1313403042}
-    - target: {fileID: 2481970763084045811, guid: f811afb5bbd123b4c8bcf72eb38e75f0, type: 3}
-      propertyPath: ambientShakeIntensity
-      value: 0.01
-      objectReference: {fileID: 0}
     - target: {fileID: 4036688109785045020, guid: f811afb5bbd123b4c8bcf72eb38e75f0, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -11461,7 +11463,7 @@ PrefabInstance:
     - target: {fileID: 5073556152367663574, guid: f811afb5bbd123b4c8bcf72eb38e75f0, type: 3}
       propertyPath: healthText
       value: 
-      objectReference: {fileID: 274227385}
+      objectReference: {fileID: 0}
     - target: {fileID: 5073556152367663575, guid: f811afb5bbd123b4c8bcf72eb38e75f0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11518,6 +11520,5 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1313403042}
-    m_RemovedComponents:
-    - {fileID: 2042148600, guid: f811afb5bbd123b4c8bcf72eb38e75f0, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f811afb5bbd123b4c8bcf72eb38e75f0, type: 3}
