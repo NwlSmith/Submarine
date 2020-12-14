@@ -70,7 +70,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6747263694776957842}
-  m_Mesh: {fileID: 3861478300804232965, guid: 6e3867f9d8ffc8849986fc25b3598ee5, type: 3}
+  m_Mesh: {fileID: 3861478300804232965, guid: fd0f34617815879498b82a0ac11f5714, type: 3}
 --- !u!23 &5090163675046500935
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -90,7 +90,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 6e3867f9d8ffc8849986fc25b3598ee5, type: 3}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -179,6 +179,8 @@ MonoBehaviour:
   Child: {fileID: 0}
   RB: {fileID: 6971347832914588942}
   MyJoint: {fileID: 6971347832914588940}
+  PlayerRB: {fileID: 0}
+  Hooked: 0
   Force: 800
 --- !u!145 &6971347832914588940
 SpringJoint:

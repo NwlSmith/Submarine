@@ -8,13 +8,18 @@ public class Harpoon : MonoBehaviour
     public GameObject Child;
     public Rigidbody RB;
     public SpringJoint MyJoint;
-
     public float Force;
+
+
+    [Space]
+
+    public float AnchorShiftY;
+    public float anchorShiftZ;
 
     void Awake() 
     {
         HarpoonGun.instance.Harpoon = this.gameObject;
-        MyJoint.connectedBody = HarpoonGun.instance.RB;
+        MyJoint.connectedBody = CallPlayerRigidBody.instance.RB;
     }
     void Start()
     {
@@ -30,7 +35,18 @@ public class Harpoon : MonoBehaviour
         // Rope.transform.position = HarpoonGun.instance.gameObject.transform.position;
         if (true) 
         {
-        
+            
+        }
+
+
+    }
+
+    private void FixedUpdate()
+    {
+        if (RB.constraints == RigidbodyConstraints.FreezeAll)
+        {
+            MyJoint.spring = 300;
+            //MyJoint.connectedBody = CallPlayerRigidBody.instance.RB;
         }
     }
 
@@ -38,12 +54,18 @@ public class Harpoon : MonoBehaviour
     {
         Child.transform.parent = null;
         Destroy(this.gameObject);
+
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy") 
         {
+        }
+
+        if (other.tag == "Wood") 
+        {
+            RB.constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 

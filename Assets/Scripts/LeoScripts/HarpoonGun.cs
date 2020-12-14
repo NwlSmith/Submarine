@@ -36,7 +36,7 @@ public class HarpoonGun : MonoBehaviour
                 Instantiate(RopePrefab, transform.position, transform.rotation);
             }
         }
-        if (Input.GetMouseButtonUp(0)) 
+        if (Input.GetMouseButtonUp(0) && true) 
         {
             Destroy(Harpoon);
             Destroy(Rope);
