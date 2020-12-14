@@ -5128,8 +5128,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3146353677697219338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 3}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0, y: 9.742, z: 0.4}
+  m_LocalScale: {x: 5, y: 16.483923, z: 5.0000024}
   m_Children: []
   m_Father: {fileID: 3146353676748942616}
   m_RootOrder: 1
@@ -5407,6 +5407,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 53bc03a99e1fd4535a2f48dabf44a4b5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a4f1543dc102476479cdfc479675b12d, type: 2}
     - target: {fileID: -927199367670048503, guid: 53bc03a99e1fd4535a2f48dabf44a4b5, type: 3}
       propertyPath: m_Name
       value: Pillar
