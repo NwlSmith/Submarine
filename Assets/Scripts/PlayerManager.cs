@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
  * Creator: Nate Smith
@@ -14,12 +15,15 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager instance = null;
 
     public int health = 5;
+    [SerializeField] private Text healthText = null;
 
     private float lastCollisionTime = 0f;
     [SerializeField] private float collisionCooldown = 2f;
 
-    private SubmarineMovement movement;
     public CameraFX camFX;
+    private SubmarineMovement movement;
+    private PlayerLightManager playerLightManager;
+    private PlayerSoundManager playerSoundManager;
 
     private void Awake()
     {
@@ -31,20 +35,29 @@ public class PlayerManager : MonoBehaviour
 
         movement = GetComponent<SubmarineMovement>();
         camFX = GetComponentInChildren<CameraFX>();
+
+        playerLightManager = GetComponentInChildren<PlayerLightManager>();
+        playerSoundManager = GetComponentInChildren<PlayerSoundManager>();
     }
 
     public void TakeDamage(int damage = 1)
     {
         health -= damage;
+        healthText.text = "Health: " + health;
     }
 
     // handle damage from fast collisions
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.GetComponent<Harpoon>())
+        {
+            return;
+        }
 
         if (collision.relativeVelocity.magnitude > 5f)
         {
             camFX.HighShake();
+            playerSoundManager.HeavyImpact();
             // Major hit
             if (lastCollisionTime + collisionCooldown < Time.time)
             {
@@ -58,17 +71,103 @@ public class PlayerManager : MonoBehaviour
         {
             // Minor hit
             camFX.MedShake();
+            playerSoundManager.MedImpact();
         }
         else if (collision.relativeVelocity.magnitude > 1f)
         {
             // Very minor hit
             camFX.LowShake();
+            playerSoundManager.LowImpact();
         }
     }
 
-    public void BossSeenTooLong()
+    public void Moving()
     {
-        TakeDamage(1);
+        playerSoundManager.Moving();
     }
 
+    public void MovingFast()
+    {
+        playerSoundManager.MovingFast();
+    }
+
+    public void NotMoving()
+    {
+        playerSoundManager.NotMoving();
+    }
+
+
+    public void BossSawPlayer()
+    {
+        playerLightManager.BossSawPlayer();
+        camFX.ambientRumbling = true;
+        playerSoundManager.ActivateAmbientBossRumble();
+    }
+
+    public void BossLostPlayer()
+    {
+        playerLightManager.BossLostPlayer();
+        camFX.ambientRumbling = false;
+        playerSoundManager.DeactivateAmbientBossRumble();
+    }
+
+    public void BossSeenPlayerTooLong(Vector3 bossPos)
+    {
+        StartCoroutine(BossSeenPlayerTooLongEnum(bossPos));
+    }
+
+    private IEnumerator BossSeenPlayerTooLongEnum(Vector3 bossPos)
+    {
+        // big red light, play sound
+        playerLightManager.BossSeenPlayerTooLong();
+        playerSoundManager.BossCaughtPlayer();
+        movement.canMove = false;
+
+        // lerp to look at boss
+        float elapsedTime = 0f;
+        float duration = 1f;
+        Quaternion startRot = transform.rotation;
+        Quaternion targetRot = Quaternion.LookRotation((bossPos - transform.position).normalized, Vector3.up);
+        while(elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            transform.rotation = Quaternion.Lerp(startRot, targetRot, elapsedTime / duration);
+            yield return null;
+        }
+
+        transform.rotation = targetRot;
+
+        // zoom in
+        elapsedTime = 0f;
+        duration = .3f;
+        Camera cam = camFX.GetComponent<Camera>();
+        float startFOV = cam.fieldOfView;
+        float targetFOV = 30f;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            cam.fieldOfView = Mathf.SmoothStep(startFOV, targetFOV, elapsedTime / duration);
+            yield return null;
+        }
+        cam.fieldOfView = targetFOV;
+
+        yield return new WaitForSeconds(.5f);
+
+        TakeDamage(1);
+
+        yield return new WaitForSeconds(.5f);
+        // take damage, shake, heavy impact
+        camFX.HighShake();
+        playerSoundManager.HeavyImpact();
+        playerSoundManager.BossAttackPlayer();
+        cam.fieldOfView = startFOV;
+        movement.BossPush(bossPos);
+        movement.canMove = true;
+    }
+
+    public void CaughtInExplosion(Vector3 explosionPos)
+    {
+        TakeDamage(1);
+        movement.CaughtInExplosion(explosionPos);
+    }
 }

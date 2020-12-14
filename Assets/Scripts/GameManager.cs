@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance = null;
+
+    [SerializeField] private Image blackOverlay = null;
 
     public int numPillars = 5;
 
@@ -16,6 +19,8 @@ public class GameManager : MonoBehaviour
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
+
+        StartCoroutine(BlackOverlayFadeOut());
     }
 
 
@@ -26,19 +31,44 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator BlackOverlayFadeOut()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            CameraFX.instance.LowShake();
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            CameraFX.instance.MedShake();
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-            CameraFX.instance.HighShake();
+        blackOverlay.color = new Color(0f, 0f, 0f, 1f);
+        float duration = 2f;
+        float elapsedTime = 0f;
+        Color initColor = new Color(0f, 0f, 0f, 1f);
+        Color finalColor = new Color(0f, 0f, 0f, 0f);
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+
+            blackOverlay.color = Color.Lerp(initColor, finalColor, elapsedTime / duration);
+
+            yield return null;
+        }
+        blackOverlay.color = finalColor;
+    }
+
+    private IEnumerator BlackOverlayFadeIn()
+    {
+        blackOverlay.color = new Color(0f, 0f, 0f, 0f);
+        float duration = 2f;
+        float elapsedTime = 0f;
+        Color initColor = new Color(0f, 0f, 0f, 0f);
+        Color finalColor = new Color(0f, 0f, 0f, 1f);
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+
+            blackOverlay.color = Color.Lerp(initColor, finalColor, elapsedTime / duration);
+
+            yield return null;
+        }
+        blackOverlay.color = finalColor;
     }
 
     public void ExplodedPillar()
     {
-
+        numPillars--;
     }
 }
