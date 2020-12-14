@@ -59,7 +59,7 @@ MonoBehaviour:
   SwimmingStance: {fileID: 6236471838301583531}
   DistanceToPlayer: 0
   Streched: 0
-  SearchRange: 10
+  SearchRange: 7
   SearchRangeClose: 5
 --- !u!54 &158331832361229204
 Rigidbody:
