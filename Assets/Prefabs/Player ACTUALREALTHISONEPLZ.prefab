@@ -74,7 +74,7 @@ AudioLowPassFilter:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.12232833
+      value: 0.11323329
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 5409256122575845331}
   - component: {fileID: 5073556153479073006}
   m_Layer: 5
-  m_Name: Spot Light (1)
+  m_Name: Dashboard Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -512,6 +512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc4579a168c44b42beff56a39419e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanControlLights: 1
+  indoorLight: {fileID: 5409256122575845331}
   bossSightLightLow: {fileID: 451116008120050774}
   bossSightLightHigh: {fileID: 5026334506382805066}
   flashlightDim: {fileID: 7210061881755177852}
@@ -1058,6 +1060,7 @@ MonoBehaviour:
   health: 5
   healthText: {fileID: 0}
   collisionCooldown: 2
+  dashboardDamageSprites: []
   camFX: {fileID: 0}
 --- !u!114 &5413118437159400592
 MonoBehaviour:

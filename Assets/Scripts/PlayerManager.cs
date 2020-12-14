@@ -15,15 +15,16 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager instance = null;
 
     public int health = 5;
-    [SerializeField] private Text healthText = null;
 
     private float lastCollisionTime = 0f;
     [SerializeField] private float collisionCooldown = 2f;
+    [SerializeField] private Sprite[] dashboardDamageSprites = null;
 
     public CameraFX camFX;
     private SubmarineMovement movement;
     private PlayerLightManager playerLightManager;
     private PlayerSoundManager playerSoundManager;
+    private SpriteRenderer dashboardDamageSprite = null;
 
     private void Awake()
     {
@@ -38,12 +39,24 @@ public class PlayerManager : MonoBehaviour
 
         playerLightManager = GetComponentInChildren<PlayerLightManager>();
         playerSoundManager = GetComponentInChildren<PlayerSoundManager>();
+        dashboardDamageSprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     public void TakeDamage(int damage = 1)
     {
+        if (health <= 0)
+            return;
         health -= damage;
-        healthText.text = "Health: " + health;
+        // change dashboard sprite
+
+
+        if (health <= 0)
+            DeathSequence();
+
+        if (dashboardDamageSprites.Length > health)
+        {
+            dashboardDamageSprite.sprite = dashboardDamageSprites[health];
+        }
     }
 
     // handle damage from fast collisions
@@ -169,5 +182,24 @@ public class PlayerManager : MonoBehaviour
     {
         TakeDamage(1);
         movement.CaughtInExplosion(explosionPos);
+    }
+
+    private void DeathSequence()
+    {
+        StartCoroutine(DeathSequenceEnum());
+    }
+
+    private IEnumerator DeathSequenceEnum()
+    {
+        // lose control
+        movement.canMove = false;
+        // start playing sounds
+        playerSoundManager.DeathSounds();
+        playerLightManager.DeathSequence();
+        movement.DeathSequence();
+        // start rotating on z and on x, move down slowly, fade to black
+
+        yield return new WaitForSeconds(3f);
+        GameManager.instance.DeathSequence();
     }
 }

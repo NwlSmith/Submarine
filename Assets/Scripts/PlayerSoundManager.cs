@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerSoundManager : MonoBehaviour
 {
-
-    private bool stoppingMoveSound = false;
+    
     private Coroutine stoppingMoveSoundCO = null;
 
     private AudioSource impactAS;
@@ -170,5 +169,10 @@ public class PlayerSoundManager : MonoBehaviour
     public void BossAttackPlayer()
     {
         bossAttackPlayerAS.Play();
+    }
+
+    public void DeathSounds()
+    {
+
     }
 }
