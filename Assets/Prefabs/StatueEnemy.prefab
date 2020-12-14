@@ -287,7 +287,7 @@ MonoBehaviour:
   - {fileID: 2396106193382717800}
   - {fileID: 2396106193135785302}
   - {fileID: 2396106192915127058}
-  SpawnRange: 30
+  SpawnRange: 50
 --- !u!54 &2396106194324693553
 Rigidbody:
   m_ObjectHideFlags: 0
