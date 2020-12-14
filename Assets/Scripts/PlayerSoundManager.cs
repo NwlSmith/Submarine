@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerSoundManager : MonoBehaviour
 {
 
+    private bool stoppingMoveSound = false;
+    private Coroutine stoppingMoveSoundCO = null;
+
     private AudioSource impactAS;
     private AudioSource ambientBossRumbleAS;
     private AudioSource bossCaughtPlayerAS;
@@ -61,6 +64,13 @@ public class PlayerSoundManager : MonoBehaviour
 
     public void Moving()
     {
+        // if the stop move sound CO is being used, turn it off.
+        if (stoppingMoveSoundCO != null)
+        {
+            StopCoroutine(stoppingMoveSoundCO);
+            stoppingMoveSoundCO = null;
+        }
+
         subMovementAS.volume = subMovementVolume;
         if (!subMovementAS.isPlaying || subMovementAS.pitch == 1.1f)
         {
@@ -73,6 +83,13 @@ public class PlayerSoundManager : MonoBehaviour
 
     public void MovingFast()
     {
+        // if the stop move sound CO is being used, turn it off.
+        if (stoppingMoveSoundCO != null)
+        {
+            StopCoroutine(stoppingMoveSoundCO);
+            stoppingMoveSoundCO = null;
+        }
+
         subMovementAS.volume = subMovementVolume;
         if (!subMovementAS.isPlaying || subMovementAS.pitch == 1f)
         {
@@ -86,11 +103,31 @@ public class PlayerSoundManager : MonoBehaviour
 
     public void NotMoving()
     {
-        if (subMovementAS.isPlaying)
+        if (subMovementAS.isPlaying && stoppingMoveSoundCO == null)
         {
-            subMovementAS.Stop();
+            //subMovementAS.Stop();
             // lerp to a stop!!!!!!!!!!!!!!!
+            stoppingMoveSoundCO = StartCoroutine(NotMovingEnum());
         }
+    }
+
+    private IEnumerator NotMovingEnum()
+    {
+        // Lerp volume to 0 quickly
+        float elapsedTime = 0f;
+        float duration = .5f;
+        float startVol = subMovementAS.volume;
+        float targetVol = 0f;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            subMovementAS.volume = Mathf.Lerp(startVol, targetVol, elapsedTime / duration);
+            yield return null;
+        }
+
+        subMovementAS.volume = targetVol;
+        stoppingMoveSoundCO = null;
+        subMovementAS.Stop();
     }
 
     public void HeavyImpact()

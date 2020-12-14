@@ -49,6 +49,10 @@ public class PlayerManager : MonoBehaviour
     // handle damage from fast collisions
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.GetComponent<Harpoon>())
+        {
+            return;
+        }
 
         if (collision.relativeVelocity.magnitude > 5f)
         {
