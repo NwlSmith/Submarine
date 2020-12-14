@@ -12,6 +12,7 @@ public class HarpoonGun : MonoBehaviour
     public GameObject Harpoon;
     public GameObject RopePrefab;
     public GameObject Rope;
+    public GameObject LoadedHarpoon;
 
     void Awake() 
     {
@@ -20,13 +21,14 @@ public class HarpoonGun : MonoBehaviour
 
     void Start()
     {
-        
+        LoadedHarpoon.SetActive(true);
     }
 
     void Update()
     {
         if (Input.GetMouseButton(0))
         {
+            LoadedHarpoon.SetActive(false);
             if (Harpoon == null)
             {
                 Instantiate(HarpoonPrefab, transform.position, transform.rotation);
@@ -40,6 +42,7 @@ public class HarpoonGun : MonoBehaviour
         {
             Destroy(Harpoon);
             Destroy(Rope);
+            LoadedHarpoon.SetActive(true);
         }
 
     }
