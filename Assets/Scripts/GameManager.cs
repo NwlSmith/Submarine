@@ -48,10 +48,10 @@ public class GameManager : MonoBehaviour
         }
         if (!dead)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                PlayerManager.instance.TakeDamage(5);
-            }
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+            //    PlayerManager.instance.TakeDamage(5);
+            //}
         }
     }
 
