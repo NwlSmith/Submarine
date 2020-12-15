@@ -104,17 +104,19 @@ public class GameManager : MonoBehaviour
         float duration = 4f;
         float elapsedTime = 0f;
         Color initColor = new Color(1f, 1f, 1f, 0f);
+        Color initColorRed = new Color(1f, 0f, 0f, 0f);
         Color finalColor = new Color(1f, 1f, 1f, 1f);
+        Color finalColorRed = new Color(1f, 0f, 0f, 1f);
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
             
-            deathText1.color = Color.Lerp(initColor, finalColor, elapsedTime / duration);
+            deathText1.color = Color.Lerp(initColorRed, finalColorRed, elapsedTime / duration);
             deathText2.color = Color.Lerp(initColor, finalColor, elapsedTime / duration);
 
             yield return null;
         }
-        deathText1.color = finalColor;
+        deathText1.color = finalColorRed;
         deathText2.color = finalColor;
     }
 }

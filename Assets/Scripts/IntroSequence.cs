@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class IntroSequence : MonoBehaviour
 {
-    [SerializeField] private Image blackOverlay;
+    [SerializeField] private Image blackOverlay = null;
     [SerializeField] private float textSpeed = .5f;
     private Text text;
     private AudioSource audioSource;
