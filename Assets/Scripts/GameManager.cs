@@ -46,13 +46,6 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
-        if (!dead)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                PlayerManager.instance.TakeDamage(5);
-            }
-        }
     }
 
     private IEnumerator BlackOverlayFadeOut(float duration)
