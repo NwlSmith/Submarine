@@ -48,7 +48,7 @@ public class Harpoon : MonoBehaviour
         }
         else
         {
-            MyJoint.maxDistance = 15f;
+            MyJoint.maxDistance = 25f;
             HarpoonGun.instance.StopReelInSound();
         }
 

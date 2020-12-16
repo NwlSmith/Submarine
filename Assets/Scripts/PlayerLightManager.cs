@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerLightManager : MonoBehaviour
 {
+    public bool CanControlLights = true;
+
+    [SerializeField] private Light indoorLight = null;
+
     [SerializeField] private Light bossSightLightLow = null;
     [SerializeField] private Light bossSightLightHigh = null;
 
@@ -22,7 +26,7 @@ public class PlayerLightManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && CanControlLights)
         {
             if (!flashlightDim.enabled && !flashlightBright.enabled)
             {
@@ -66,5 +70,56 @@ public class PlayerLightManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         bossSightLightLow.enabled = false;
         bossSightLightHigh.enabled = false;
+    }
+
+    public void DeathSequence()
+    {
+        CanControlLights = false;
+        StartCoroutine(DeathSequenceEnum1());
+        //StartCoroutine(DeathSequenceEnum2());
+    }
+
+    private IEnumerator DeathSequenceEnum1()
+    {
+        flashlightBright.enabled = false;
+        flashlightDim.enabled = false;
+        yield return new WaitForSeconds(.1f);
+        flashlightDim.enabled = true;
+        yield return new WaitForSeconds(.5f);
+        flashlightDim.enabled = false;
+        yield return new WaitForSeconds(.1f);
+        flashlightDim.enabled = true;
+        yield return new WaitForSeconds(.4f);
+        flashlightDim.enabled = false;
+        yield return new WaitForSeconds(.1f);
+        flashlightDim.enabled = true;
+        yield return new WaitForSeconds(.3f);
+        flashlightDim.enabled = false;
+        yield return new WaitForSeconds(.1f);
+        flashlightDim.enabled = true;
+        yield return new WaitForSeconds(.1f);
+        flashlightDim.enabled = false;
+        yield return new WaitForSeconds(.1f);
+        flashlightDim.enabled = true;
+        yield return new WaitForSeconds(.1f);
+        flashlightDim.enabled = false;
+        yield return new WaitForSeconds(.1f);
+        flashlightDim.enabled = true;
+        yield return new WaitForSeconds(.1f);
+        flashlightDim.enabled = false;
+        indoorLight.enabled = false;
+        // 1.7 seconds total
+    }
+
+    private IEnumerator DeathSequenceEnum2()
+    {
+        yield return new WaitForSeconds(1f);
+        while (true)
+        {
+            bossSightLightLow.enabled = false;
+            yield return new WaitForSeconds(.5f);
+            bossSightLightLow.enabled = true;
+            yield return new WaitForSeconds(.5f);
+        }
     }
 }

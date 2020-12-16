@@ -31,7 +31,7 @@ public class BossSight : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (activated)
+        if (activated || !GameManager.instance.dead)
         {
             Ray bossToPlayer = new Ray(transform.position, (playerManager.transform.position - transform.position).normalized);
             if (Physics.Raycast(bossToPlayer, out RaycastHit hit, sightRange, sightLayers))
