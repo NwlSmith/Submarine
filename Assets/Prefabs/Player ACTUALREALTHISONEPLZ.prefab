@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 6620755041805458298}
   - component: {fileID: 5409256122575845331}
   - component: {fileID: 5073556153479073006}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Dashboard Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 2709047995276569091}
   - component: {fileID: 5928648123735379024}
   - component: {fileID: 8649171466224759660}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 5077937084761785238}
   - component: {fileID: 5665954760565796041}
   - component: {fileID: 7968764598242719194}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -620,7 +620,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3869785144844682263}
   - component: {fileID: 5113430649760234963}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Navball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,7 +755,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4918227054359338665}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Gimbal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1058,7 +1058,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
-  healthText: {fileID: 0}
   collisionCooldown: 2
   dashboardDamageSprites: []
   camFX: {fileID: 0}
@@ -1264,7 +1263,7 @@ GameObject:
   - component: {fileID: 3978382346268404899}
   - component: {fileID: 2775673351999943916}
   - component: {fileID: 1848008381222776887}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HarpoonGun
   m_TagString: HarpoonGun
   m_Icon: {fileID: 0}
@@ -1335,7 +1334,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7869288533186957862}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Cockpit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1373,7 +1372,7 @@ GameObject:
   - component: {fileID: 2683183921940182036}
   - component: {fileID: 534672691636061939}
   - component: {fileID: 790518320138811685}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1508,7 +1507,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 567
+    m_Bits: 1591
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 468cc40d9fa28e74f87d7f321c70d5c1, type: 2}
   m_TargetDisplay: 0
@@ -1591,7 +1590,7 @@ GameObject:
   - component: {fileID: 9202902808512831968}
   - component: {fileID: 8907791611266506136}
   - component: {fileID: 2039641051024973233}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GimbalBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16922,7 +16921,7 @@ GameObject:
   - component: {fileID: 4581906853012091120}
   - component: {fileID: 5365012832758601827}
   - component: {fileID: 4250775772526716119}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17017,7 +17016,7 @@ GameObject:
   - component: {fileID: 6092283133978466959}
   - component: {fileID: 4441753340461548507}
   - component: {fileID: 4036688109785045020}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17678,7 +17677,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 631391037822845994}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17712,7 +17711,7 @@ GameObject:
   - component: {fileID: 5757819944130019471}
   - component: {fileID: 3777860328730722579}
   - component: {fileID: 3617251528871647851}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17807,7 +17806,7 @@ GameObject:
   - component: {fileID: 2267777891588282}
   - component: {fileID: 3270740425578918076}
   - component: {fileID: 8692171254782511569}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Porthole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41113,7 +41112,7 @@ GameObject:
   - component: {fileID: 1716659518146833601}
   - component: {fileID: 8395145325745104205}
   - component: {fileID: 8709749669509084624}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Quad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41200,7 +41199,7 @@ GameObject:
   - component: {fileID: 1785473823143956556}
   - component: {fileID: 6262001475920033521}
   - component: {fileID: 3082088715002714492}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41351,6 +41350,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HarpoonGun
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b44eb80a42b52f04087ee2e7415c947b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b44eb80a42b52f04087ee2e7415c947b, type: 3}
 --- !u!4 &1723007485287211011 stripped
@@ -41428,6 +41431,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fd0f34617815879498b82a0ac11f5714, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fd0f34617815879498b82a0ac11f5714, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd0f34617815879498b82a0ac11f5714, type: 3}

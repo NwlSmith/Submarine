@@ -1352,7 +1352,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1548
+  m_Name: pb_Mesh-128580
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3871,7 +3871,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1576
+  m_Name: pb_Mesh-128608
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4509,7 +4509,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1526
+  m_Name: pb_Mesh-128558
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10900,6 +10900,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43c854a5f7f937d4ebfa7455aea7c0e7, type: 3}
+--- !u!20 &2106568620 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 629704239498751894, guid: f811afb5bbd123b4c8bcf72eb38e75f0, type: 3}
+  m_PrefabInstance: {fileID: 5073556153819463459}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2123070194
 GameObject:
   m_ObjectHideFlags: 0
@@ -11262,6 +11267,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 148676903826093580, guid: 7852365b2d439694c8ddc187dac31118, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 2106568620}
     - target: {fileID: 148676903826093583, guid: 7852365b2d439694c8ddc187dac31118, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11459,10 +11468,6 @@ PrefabInstance:
     - target: {fileID: 5073556152367663571, guid: f811afb5bbd123b4c8bcf72eb38e75f0, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073556152367663574, guid: f811afb5bbd123b4c8bcf72eb38e75f0, type: 3}
-      propertyPath: healthText
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5073556152367663575, guid: f811afb5bbd123b4c8bcf72eb38e75f0, type: 3}
       propertyPath: m_LocalPosition.x
