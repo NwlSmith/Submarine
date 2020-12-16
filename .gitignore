@@ -60,3 +60,5 @@ crashlytics-build.properties
 
 
 *.fbx.meta
+Packages/manifest.json
+Packages/packages-lock.json
